@@ -1,6 +1,6 @@
 # Sensory Agent
 
-The `SensoryAgent` is an abstract base class designed for creating agents that interact with various sensory components, such as images or depth maps. These agents can connect to different backends to process sensory data, enabling tasks like object detection, depth estimation, and more.
+The `SensoryAgent` is an abstract base class designed for creating agents that interact with various sensory components, such as images and/or depth maps. These agents can connect to different backends to process sensory data, enabling tasks like object detection, depth estimation, and more.
 
 ## Key Features
 
