@@ -264,7 +264,9 @@ To learn more about all of the possibilities with embodied agents, check out the
 - You can `pack` a list of `Sample`s or Dicts into a single `Sample` or `Dict` and `unpack` accordingly?
 - You can `unflatten` any python structure into a `Sample` class so long you provide it with a valid json schema?
 
-## API Reference
+<summary><h2 style="display: inline-block;">Deep Dive</h2></summary>
+
+## Building Blocks
 
 #### Creating a Sample
 
