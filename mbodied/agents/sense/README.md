@@ -4,7 +4,7 @@ The `SensoryAgent` is an abstract base class designed for creating agents that i
 
 ## Key Features
 
-- **Backend Flexibility**: Natively supports multiple API services including OpenAI, Anthropic, vLLM, Ollama, HTTPX, and any Gradio endpoints.
+- **Backend Flexibility**: Natively supports multiple API services including OpenAI, Anthropic, vLLM, Ollama, HTTPX, and any Gradio endpoints. More integrations are coming soon!
 - **Extensibility**: The `SensoryAgent` class provides a flexible template for building custom sensory agents tailored to specific tasks or services.
 
 ## Quick Start
@@ -63,70 +63,3 @@ response = agent.act(image=your_image_data)
 
 Replace `your_image_data` with the actual image or sensory data you wish to process. The `act` method sends the data to the backend and returns the result.
 
-
-## Example Agents
-
-### Depth Estimation Agent
-
-The `DepthEstimationAgent` estimates depth from an image using a remote server. Here's how you can use it:
-
-```python
-from mbodied.agents.sense.depth_estimation_agent import DepthEstimationAgent
-from mbodied.types.sense.vision import Image
-
-# Initialize the depth estimation agent
-agent = DepthEstimationAgent(model_src="https://api.mbodi.ai/sense/")
-
-# Use the agent to estimate depth from an image
-image = Image("path/to/your/image.jpeg")
-depth_image = agent.act(image=image)
-
-# Display the depth image (assuming PIL integration)
-depth_image.pil.show()
-```
-
-### Segmentation Agent
-
-The `SegmentationAgent` performs image segmentation, identifying and segmenting objects within an image. Here's how you can use it:
-
-```python 
-from mbodied.agents.sense.segmentation_agent import SegmentationAgent
-from mbodied.types.sense.vision import Image
-from mbodied.types.sense.world import BBox2D, PixelCoords
-
-# Initialize the segmentation agent
-agent = SegmentationAgent(model_src="https://api.mbodi.ai/sense/")
-
-# Example 1: Segmenting using bounding boxes
-bboxes = [BBox2D(x1=225, y1=196, x2=408, y2=355), BBox2D(x1=378, y1=179, x2=494, y2=236)]
-mask_image, masks = agent.act(image=Image("path/to/your/image.jpeg"), input_data=bboxes)
-
-# Display the segmented image
-mask_image.pil.show()
-
-# Example 2: Segmenting using pixel coordinates
-pixel_coords = PixelCoords(u=800, v=100)
-mask_image, masks = agent.act(image=Image("path/to/your/image.jpeg"), input_data=pixel_coords)
-
-# Display the segmented image
-mask_image.pil.show()
-```
-
-### Object Detection Agent
-
-The `ObjectDetectionAgent` detects objects within an image and provides their locations. Here's how you can use it:
-
-```python
-from mbodied.agents.sense.object_detection_agent import ObjectDetectionAgent
-from mbodied.types.sense.vision import Image
-
-# Initialize the object detection agent
-agent = ObjectDetectionAgent(model_src="https://api.mbodi.ai/sense/")
-
-# Use the agent to detect objects in an image
-image = Image("path/to/your/image.jpeg")
-detection_result = agent.act(image=image, objects=["object_1", "object_2"], model_type="YOLOWorld")
-
-# Display the annotated image with detected objects
-detection_result.annotated.pil.show()
-```
