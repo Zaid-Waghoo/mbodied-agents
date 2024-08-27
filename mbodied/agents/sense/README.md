@@ -19,7 +19,7 @@ from mbodied.agents.sense.sensory_agent import SensoryAgent
 
 ### 2. Define a Custom Sensory Agent
 
-Create a subclass of `SensoryAgent` to define a custom sensory agent. For example, the following class connects to a Gradio-based depth estimation server:
+Create a subclass of `SensoryAgent` to define a custom sensory agent. For example,
 
 
 ```python
