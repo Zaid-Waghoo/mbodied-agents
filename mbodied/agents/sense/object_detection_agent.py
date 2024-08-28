@@ -31,7 +31,7 @@ class ObjectDetectionAgent(SensoryAgent):
             **kwargs,
         )
 
-    def act(self, image: Image, objects: list[str] | str, model_type: str, *args, api_name: str = "/detect", **kwargs) -> World:
+    def act(self, image: Image, objects: list[str] | str, model_type: str = "YOLOWorld", *args, api_name: str = "/detect", **kwargs) -> World:
         """Act based on the prompt and image using the remote object detection server.
 
         Args:
