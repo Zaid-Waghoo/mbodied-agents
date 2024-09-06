@@ -21,10 +21,9 @@ from mbodied.agents.sense.sensory_agent import SensoryAgent
 
 Create a subclass of `SensoryAgent` to define a custom sensory agent. For example,
 
-
 ```python
 class MySensoryAgent(SensoryAgent):
-    
+
     def __init__(
         self,
         model_src="https://api.mbodi.ai/sense/",
@@ -46,7 +45,6 @@ class MySensoryAgent(SensoryAgent):
 
 In this example, the `MySensoryAgent` class is configured to interact with a Gradio endpoint at the specified `model_src`. The `act` method sends data to the backend and returns the response.
 
-
 ### 3. Use the Custom Agent in Your Script
 
 In another script, you can import and use your custom sensory agent as follows:
@@ -63,12 +61,11 @@ response = agent.act(image=your_image_data)
 
 Replace `your_image_data` with the actual image or sensory data you wish to process. The `act` method sends the data to the backend and returns the result.
 
-
 ## Example Agents
 
 ### Depth Estimation Agent
 
-The `DepthEstimationAgent` estimates depth from an image using a remote server. Here's how you can use it:
+The `DepthEstimationAgent` estimates depth from an image using a mbodi remote server. Here's how you can use it:
 
 ```python
 from mbodied.agents.sense.depth_estimation_agent import DepthEstimationAgent
@@ -89,7 +86,7 @@ depth_image.pil.show()
 
 The `SegmentationAgent` performs image segmentation, identifying and segmenting objects within an image. Here's how you can use it:
 
-```python 
+```python
 from mbodied.agents.sense.segmentation_agent import SegmentationAgent
 from mbodied.types.sense.vision import Image
 from mbodied.types.sense.world import BBox2D, PixelCoords

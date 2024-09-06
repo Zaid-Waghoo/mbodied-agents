@@ -31,7 +31,15 @@ class ObjectDetectionAgent(SensoryAgent):
             **kwargs,
         )
 
-    def act(self, image: Image, objects: list[str] | str, model_type: str = "YOLOWorld", *args, api_name: str = "/detect", **kwargs) -> World:
+    def act(
+        self,
+        image: Image,
+        objects: list[str] | str,
+        model_type: str = "YOLOWorld",
+        *args,
+        api_name: str = "/detect",
+        **kwargs,
+    ) -> World:
         """Act based on the prompt and image using the remote object detection server.
 
         Args:
@@ -50,12 +58,18 @@ class ObjectDetectionAgent(SensoryAgent):
 
         if isinstance(objects, list):
             objects = ",".join(objects)
-        annotated_img, json_dict = self.actor.predict(image.base64, objects, model_type=model_type, *args, api_name=api_name, **kwargs)
+        annotated_img, json_dict = self.actor.predict(
+            image.base64, objects, model_type=model_type, *args, api_name=api_name, **kwargs
+        )
         return World.model_validate(json_dict)
 
 
 # Example usage:
 if __name__ == "__main__":
     agent = ObjectDetectionAgent(model_src="https://api.mbodi.ai/sense/")
-    result = agent.act(image=Image("resources/bridge_example.jpeg", size=(224, 224)), objects=["spoon", "bowl"], model_type="Grounding DINO")
+    result = agent.act(
+        image=Image("resources/bridge_example.jpeg", size=(224, 224)),
+        objects=["spoon", "bowl"],
+        model_type="Grounding DINO",
+    )
     result.annotated.pil.show()
